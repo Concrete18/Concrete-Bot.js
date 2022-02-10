@@ -1,16 +1,21 @@
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+// Require the necessary discord.js classes
+const { Client, Intents } = require('discord.js');
+require('dotenv').config({path:'.env'})
+let os = require("os");
 
-client.on('ready', () => {
+// Token setup
+let token
+if (os.type() === 'Windows_NT') token = process.env.devBot;
+else token = process.env.prodBot;
+
+
+// Create a new client instance
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+// When the client is ready, run this code (only once)
+client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('interactionCreate', async (interaction) => {
-	if (!interaction.isCommand()) return;
-
-	if (interaction.commandName === 'ping') {
-		await interaction.reply('Pong!');
-	}
-});
-
-client.login('token');
+// Login to Discord with your client's token
+client.login(token);
