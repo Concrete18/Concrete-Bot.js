@@ -1,6 +1,17 @@
 {
-  "dependencies": {
+    "name": "Concrete-Bot.js",
+    "lockfileVersion": 2,
+    "requires": true,
+    "main": "Bot.js",
+    "scripts": {
+        "start": "node Bot.js",
+        "server": "nodemon Bot.js"
+    },
+    "dependencies": {
+    "@discordjs/builders": "^0.11.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0"
-  }
+    }
 }
